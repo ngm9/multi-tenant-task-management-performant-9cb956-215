@@ -1,0 +1,15 @@
+{
+  "name": "utkrusht-backend",
+  "version": "1.0.0",
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "jsonwebtoken": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "morgan": "*",
+    "body-parser": "*"
+  },
+  "devDependencies": { "jest": "*", "supertest": "*"}
+}

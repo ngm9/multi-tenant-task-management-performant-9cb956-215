@@ -1,0 +1,36 @@
+services:
+  mongo:
+    image: mongo
+    container_name: utkrusht-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    command: mongod --bind_ip_all
+    volumes:
+      - /root/task/mongo_data:/data/db
+      - /root/task/init_database.js:/docker-entrypoint-initdb.d/init_database.js:ro
+    environment:
+      MONGO_INITDB_DATABASE: utkrusht_taskmgr
+      MONGO_INITDB_ROOT_USERNAME: utkrushtadmin
+      MONGO_INITDB_ROOT_PASSWORD: utkrushtpass
+  backend:
+    build: /root/task/backend
+    container_name: utkrusht-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - /root/task/backend:/usr/src/app
+      - /usr/src/app/node_modules
+    working_dir: /usr/src/app
+    command: ["node", "server.js"]
+  frontend:
+    build: /root/task/frontend
+    container_name: utkrusht-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"

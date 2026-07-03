@@ -1,0 +1,16 @@
+{
+  "name": "utkrusht-frontend",
+  "version": "1.0.0",
+  "scripts": { "start":"react-scripts start", "build":"react-scripts build" },
+  "dependencies": {
+    "ajv": "^8",
+    "react": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "react-scripts": "5.0.1",
+    "axios": "*",
+    "formik": "*",
+    "yup": "*"
+  },
+  "devDependencies": { "@testing-library/react": "*", "jest": "*" }
+}
